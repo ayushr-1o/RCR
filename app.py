@@ -21,10 +21,10 @@ with st.sidebar:
     st.caption("Revolut · Personal Carbon View")
     st.divider()
     st.page_link("app.py",                            label="🏠 Home")
-    st.page_link("pages/1_📊_Dashboard.py",           label="📊 Dashboard")
-    st.page_link("pages/2_📋_Transactions.py",        label="📋 Transactions")
-    st.page_link("pages/3_🔍_Transaction_Detail.py",  label="🔍 Transaction Detail")
-    st.page_link("pages/4_🎯_Goals.py",               label="🎯 Goals & Progress")
+    st.page_link("pages/1_Dashboard.py",            label="📊 Dashboard")
+    st.page_link("pages/2_Transactions.py",          label="📋 Transactions")
+    st.page_link("pages/3_Transaction_Detail.py",    label="🔍 Transaction Detail")
+    st.page_link("pages/4_Goals.py",                 label="🎯 Goals & Progress")
     st.divider()
     st.selectbox("📅 Month", ["February 2026", "January 2026", "December 2025"])
     st.caption("⚠️ Estimates are approximate and depend on available data.")
@@ -75,6 +75,6 @@ with col_action:
     st.success("🚂 **Renfe over Uber** → saves ~1.6 kg CO₂e per trip")
     st.divider()
     if st.button("📊 Full Dashboard", type="primary", use_container_width=True):
-        st.switch_page("pages/1_📊_Dashboard.py")
+        st.switch_page("pages/1_Dashboard.py")
     if st.button("📋 All Transactions", use_container_width=True):
-        st.switch_page("pages/2_📋_Transactions.py")
+        st.switch_page("pages/2_Transactions.py")

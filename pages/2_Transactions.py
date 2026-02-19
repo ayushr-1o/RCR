@@ -65,4 +65,4 @@ for _, row in filtered.iterrows():
         with c5:
             if st.button("→", key=f"tx_{row['id']}", help="View detail"):
                 st.session_state['selected_tx_id'] = int(row['id'])
-                st.switch_page("pages/3_🔍_Transaction_Detail.py")
+                st.switch_page("pages/3_Transaction_Detail.py")
