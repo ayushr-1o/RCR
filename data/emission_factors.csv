@@ -1,0 +1,12 @@
+category,merchant_keywords,emission_factor_per_eur,unit,confidence_base,source
+Food Delivery,glovo;uber eats;deliveroo;just eat,0.35,kg CO2e/EUR,Low,Ecologistas en Accion 2023
+Rideshare,uber;cabify;bolt;free now,0.18,kg CO2e/EUR,Medium,DEFRA 2023
+Supermarket,mercadona;carrefour;lidl;aldi;dia,0.28,kg CO2e/EUR,Medium,EPA Supply Chain Factors v1.2
+Train,renfe;fgc;rodalies;ave;cercanias,0.04,kg CO2e/EUR,High,Renfe Sustainability Report
+Coffee Shop,starbucks;costa;cafe;bar;nespresso,0.12,kg CO2e/EUR,Medium,DEFRA 2023
+Fashion,zara;h&m;mango;pull&bear;bershka,0.15,kg CO2e/EUR,Low,EPA Supply Chain Factors v1.2
+Restaurant,restaurant;taberna;bodega;pizzeria,0.25,kg CO2e/EUR,Medium,DEFRA 2023
+Fuel,repsol;cepsa;bp;shell;galp,0.92,kg CO2e/EUR,High,IPCC 2021
+Flight,ryanair;vueling;iberia;easyjet,1.45,kg CO2e/EUR,Medium,ICAO Carbon Calculator
+Hotel,hotel;hostel;airbnb,0.12,kg CO2e/EUR,Low,DEFRA 2023
+Other,,0.20,kg CO2e/EUR,Low,Generic fallback

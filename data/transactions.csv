@@ -1,0 +1,21 @@
+id,date,merchant,category,amount_eur,description
+1,2026-02-01,Renfe,Train,35.50,Barcelona-Madrid AVE ticket
+2,2026-02-02,Mercadona,Supermarket,42.30,Weekly grocery shopping
+3,2026-02-03,Glovo,Food Delivery,24.10,Dinner delivery
+4,2026-02-04,Uber,Rideshare,12.80,Trip to office
+5,2026-02-05,Starbucks,Coffee Shop,6.40,Morning coffee
+6,2026-02-06,Zara,Fashion,59.99,New t-shirts
+7,2026-02-07,Uber,Rideshare,9.20,Evening trip
+8,2026-02-08,Mercadona,Supermarket,38.75,Weekend groceries
+9,2026-02-09,Glovo,Food Delivery,18.50,Lunch delivery
+10,2026-02-10,Cafe Bar Central,Coffee Shop,4.20,Espresso and croissant
+11,2026-02-11,Renfe,Train,8.60,Sant Cugat - Barcelona commute
+12,2026-02-12,Uber,Rideshare,15.40,Airport transfer
+13,2026-02-13,Mercadona,Supermarket,55.20,Big weekly shop
+14,2026-02-14,Restaurant El Born,Restaurant,34.80,Valentine's dinner
+15,2026-02-15,Glovo,Food Delivery,31.20,Grocery delivery
+16,2026-02-16,H&M,Fashion,29.99,Jeans
+17,2026-02-17,Cafe Nespresso,Coffee Shop,3.80,Afternoon coffee
+18,2026-02-18,Uber,Rideshare,11.60,Work commute
+19,2026-02-19,Mercadona,Supermarket,47.90,Weekly groceries
+20,2026-02-19,Glovo,Food Delivery,22.40,Sushi delivery
