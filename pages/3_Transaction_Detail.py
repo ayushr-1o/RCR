@@ -33,11 +33,13 @@ if row['category'] == 'Food Delivery':
                              horizontal=True, key='del_mode')
 
 # ── Run prediction ────────────────────────────────────────────────────────
-result = estimate_co2e(
-    {'merchant': row['merchant'], 'category': row['category'],
-     'amount_eur': row['amount_eur'], 'merchant_known': True},
-    delivery_mode=delivery_mode
-)
+transaction_input = {
+    'merchant':      row['merchant'],
+    'category':      row['category'],
+    'amount_eur':    row['amount_eur'],
+    'merchant_known': True
+}
+result = estimate_co2e(transaction_input, delivery_mode=delivery_mode)
 
 # ── Layout ────────────────────────────────────────────────────────────────
 col_main, col_side = st.columns([3, 2])
@@ -109,6 +111,51 @@ with col_main:
             fig_g.update_layout(paper_bgcolor='rgba(0,0,0,0)',
                                  font_color='white', height=280)
             st.plotly_chart(fig_g, use_container_width=True)
+
+    # ── AI Carbon Narrative ───────────────────────────────────────────────────
+    st.markdown("### 🌿 AI Carbon Insight")
+    if st.button("✨ Generate AI narrative", type="primary", use_container_width=True):
+        with st.spinner("Generating personalised insight..."):
+            try:
+                from llm.transaction_narrator import get_transaction_narrative
+                nd = get_transaction_narrative(transaction_input, result)
+                st.session_state[f"narrative_{tx_id}"] = nd
+            except Exception as e:
+                st.error(f"Could not generate narrative: {e}")
+
+    if f"narrative_{tx_id}" in st.session_state:
+        nd          = st.session_state[f"narrative_{tx_id}"]
+        score       = nd.get("eco_score", 5)
+        impact      = nd.get("impact_level", "Moderate")
+        score_color = "#22c55e" if score >= 7 else "#f59e0b" if score >= 4 else "#ef4444"
+
+        # Eco score card
+        st.markdown(f"""
+        <div style="background:linear-gradient(135deg,#0f172a,#1e1b4b);
+                    border-radius:16px;padding:1.2rem;margin:.5rem 0;
+                    border:1px solid #312e81">
+          <div style="display:flex;align-items:center;gap:1rem">
+            <div style="background:{score_color};color:white;font-size:1.6rem;
+                        font-weight:700;width:58px;height:58px;border-radius:50%;
+                        display:flex;align-items:center;justify-content:center">
+              {score}
+            </div>
+            <div>
+              <p style="margin:0;font-size:.8rem;color:#9ca3af">Eco Score / 10</p>
+              <p style="margin:0;font-size:1.1rem;font-weight:700;color:{score_color}">
+                {impact} Impact
+              </p>
+            </div>
+          </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown(f"**{nd.get('narrative', '')}**")
+        st.caption(f"🔍 {nd.get('comparison_context', '')}")
+
+        st.markdown("**💡 Tips for this category:**")
+        for tip in nd.get("three_tips", []):
+            st.markdown(f"- {tip}")
 
     # ── Action buttons ────────────────────────────────────────────────────
     st.markdown("### Take action")
