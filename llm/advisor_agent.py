@@ -109,7 +109,7 @@ def _get_goal_progress(goal_kg=35):
         "current_co2e_kg":       total,
         "remaining_kg":          round(max(goal_kg - total, 0), 2),
         "projected_month_end_kg": round(projected, 2),
-        "on_track":              projected < goal_kg,
+        "on_track":              str(projected < goal_kg),
         "pct_used":              round(total / goal_kg * 100, 1),
     }
 
@@ -123,9 +123,17 @@ TOOL_MAP = {
 # ── System prompt ─────────────────────────────────────────────────────────────
 SYSTEM = """You are a personal carbon footprint advisor embedded in the Revolut Carbon Receipt app.
 You have tools that access the user's real transaction data for February 2026.
-ALWAYS call at least one tool before answering to ground your response in actual data.
-Be specific, friendly, and concise. Always quantify CO2e savings in kg when suggesting changes.
-Format responses with clear sections using markdown. Never make up numbers."""
+
+When the user asks about their footprint, transactions, goals, or reduction strategies:
+  - ALWAYS call the relevant tool(s) first to ground your answer in real data.
+  - Never make up numbers — only quote figures returned by tools.
+
+When the user asks something unrelated to carbon or their transactions:
+  - Answer helpfully and conversationally without calling any tools.
+  - Gently redirect toward carbon topics if appropriate.
+
+Be specific, friendly, and concise. Format responses with clear markdown sections.
+Always quantify CO2e savings in kg when suggesting behavioural changes."""
 
 # ── Agentic loop ──────────────────────────────────────────────────────────────
 @st.cache_resource
