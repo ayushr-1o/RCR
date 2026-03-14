@@ -11,14 +11,16 @@ if "chat_history"      not in st.session_state: st.session_state.chat_history   
 if "messages_display"  not in st.session_state: st.session_state.messages_display  = []
 
 # ── Suggested questions (shown when chat is empty) ────────────────────────────
-if not st.session_state.messages_display:
-    st.markdown("### 💡 Try asking:")
-    suggestions = [
-        "How can I cut my footprint by 20% this month?",
-        "Which single change would save the most CO₂e?",
-        "Am I on track to meet my 35 kg goal?",
-        "What's driving most of my emissions?",
-    ]
+# Suggestions always visible — collapsed after first use
+suggestions = [
+    "How can I cut my footprint by 20% this month?",
+    "Which single change would save the most CO₂e?",
+    "Am I on track to meet my 35 kg goal?",
+    "What's driving most of my emissions?",
+]
+
+expanded = not bool(st.session_state.messages_display)
+with st.expander("💡 Try asking:", expanded=expanded):
     c1, c2 = st.columns(2)
     for i, q in enumerate(suggestions):
         col = c1 if i % 2 == 0 else c2
