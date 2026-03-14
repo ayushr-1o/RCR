@@ -108,7 +108,7 @@ def get_transaction_narrative(transaction: dict, result: dict) -> dict:
     prompt   = _build_prompt(transaction, result)
 
     response = client.chat(
-        model="command-r-plus",
+        model="command-a-03-2025",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.2,    # Low temperature → consistent structured output
     )

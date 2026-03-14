@@ -150,7 +150,7 @@ def run_agent(user_message: str, chat_history: list) -> tuple[str, list]:
     # ── Agentic loop ──────────────────────────────────────────────────────────
     while True:
         response = client.chat(
-            model="command-r-plus",
+            model="command-a-03-2025",
             messages=messages,
             tools=TOOLS,
         )
